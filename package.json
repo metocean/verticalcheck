@@ -1,6 +1,6 @@
 {
   "name": "verticalcheck",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Are you up or down?",
   "bin": {
     "verticalcheck": "bin/vc.js"
