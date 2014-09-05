@@ -1,4 +1,4 @@
-verticalcheck
-=============
+# Vertical Check
 
-Is it up or down?
+> Are you up or down?
+

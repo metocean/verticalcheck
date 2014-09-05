@@ -1,0 +1,24 @@
+{
+  "name": "verticalcheck",
+  "version": "0.1.0",
+  "description": "Are you up or down?",
+  "bin": {
+    "verticalcheck": "bin/vc.js"
+  },
+  "dependencies": {
+    "colors": "~0.6.2",
+    "cson": "^1.6.1",
+    "ping": "^0.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:metocean/verticalcheck.git"
+  },
+  "author": "Thomas Coats",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metocean/verticalcheck/issues"
+  },
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/metocean/verticalcheck"
+}
