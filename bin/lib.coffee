@@ -178,7 +178,7 @@ run = (task, cb) ->
     series tasks, cb
 
 if !isInteractive
-  return run config, -> console.log results
+  return run config, -> console.log JSON.stringify results, null, 2
   
 console.log()
 console.log "   #{'Vertical Check'.cyan} -- Are you up or down?"

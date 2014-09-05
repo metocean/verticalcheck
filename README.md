@@ -51,16 +51,24 @@ Running `verticalcheck` on the command line will display the following.
 Running `verticalcheck --json` will display will display the following.
 
 ```json
-[ { check: 'dns',
-    isUp: true,
-    param: 'google.co.nz',
-    message: 'dns entry google.co.nz resolves to 16 known ip addresses' },
-  { check: 'ping',
-    isUp: true,
-    param: 'google.co.nz',
-    message: 'ping google.co.nz is up' },
-  { check: 'http',
-    isUp: true,
-    param: 'http://google.co.nz/',
-    message: 'http http://google.co.nz/ is web\'d' } ]
+[
+  {
+    "check": "dns",
+    "isUp": true,
+    "param": "google.co.nz",
+    "message": "dns entry google.co.nz resolves to 16 known ip addresses"
+  },
+  {
+    "check": "ping",
+    "isUp": true,
+    "param": "google.co.nz",
+    "message": "ping google.co.nz is up"
+  },
+  {
+    "check": "http",
+    "isUp": true,
+    "param": "http://google.co.nz/",
+    "message": "http http://google.co.nz/ is web'd"
+  }
+]
 ```

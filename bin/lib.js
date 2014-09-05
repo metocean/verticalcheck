@@ -251,7 +251,7 @@
 
   if (!isInteractive) {
     return run(config, function() {
-      return console.log(results);
+      return console.log(JSON.stringify(results, null, 2));
     });
   }
 
