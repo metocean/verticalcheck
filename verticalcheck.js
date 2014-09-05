@@ -3,49 +3,13 @@
   [
     {
       dns: {
-        'fugro.metoceanview.com': '192.64.32.82',
-        'metra.metoceanview.com': '192.64.32.82',
-        'forecast.metoceanview.com': '192.64.32.82',
-        'hindcast.metoceanview.com': '192.64.32.82',
-        'route.metoceanview.com': '192.64.32.82',
-        'climate.metoceanview.com': '192.64.32.82',
-        'route.metoceanview.com': '192.64.32.82',
-        'eri.metoceanview.com': '192.64.32.82',
-        'metoceanview.com': '192.64.32.82'
+        'google.co.nz': ['131.203.3.159', '131.203.3.187', '131.203.3.170', '131.203.3.165', '131.203.3.152', '131.203.3.174', '131.203.3.144', '131.203.3.185', '131.203.3.176', '131.203.3.148', '131.203.3.155', '131.203.3.166', '131.203.3.181', '131.203.3.177', '131.203.3.163', '131.203.3.154']
       },
-      ping: ['metoceanview.com'],
-      http: ['http://metoceanview.com/']
-    }, {
-      dns: {
-        'swellmap.co.nz': '173.230.243.117',
-        'www.swellmap.co.nz': '173.230.243.117'
-      },
-      ping: ['swellmap.co.nz'],
-      http: ['http://swellmap.co.nz/', 'http://www.swellmap.co.nz/']
-    }, {
-      dns: {
-        'weathermap.co.nz': '173.230.243.117',
-        'www.weathermap.co.nz': '173.230.243.117'
-      },
-      ping: ['weathermap.co.nz'],
-      http: ['http://weathermap.co.nz/', 'http://www.weathermap.co.nz/']
-    }, {
-      dns: {
-        'snowmap.co.nz': '173.230.243.117',
-        'www.snowmap.co.nz': '173.230.243.117'
-      },
-      ping: ['snowmap.co.nz'],
-      http: ['http://snowmap.co.nz/', 'http://www.snowmap.co.nz/']
-    }, {
-      dns: {
-        'metocean.co.nz': '173.230.243.117',
-        'www.metocean.co.nz': '173.230.243.117'
-      },
-      ping: ['metocean.co.nz'],
+      ping: ['google.co.nz'],
       http: [
         {
-          'http://metocean.co.nz/': 302
-        }, 'http://www.metocean.co.nz/'
+          'http://google.co.nz/': 301
+        }
       ]
     }
   ];

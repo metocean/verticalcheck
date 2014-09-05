@@ -108,6 +108,16 @@ checks =
               result 'dns', yes, host, "dns entry #{host} resolves to #{ip}"
               return cb()
             
+            if Object.prototype.toString.call(ip) is '[object Array]' and addresses.length is ip.length
+              skip = no
+              for a in addresses
+                unless a in ip
+                  skip = yes
+                  break
+              unless skip
+                result 'dns', yes, host, "dns entry #{host} resolves to #{ip.length} known ip addresses"
+                return cb()
+            
             result 'dns', no, host, "dns entry #{host} resolved to #{addresses} instead of #{ip}"
             cb()
           
@@ -130,9 +140,7 @@ checks =
         for key, value of url
           href = key
           code = value
-          
         url = href
-        return callback()
       
       chunks = parseurl url
       options =
