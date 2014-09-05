@@ -48,7 +48,7 @@ Running `verticalcheck` on the command line will display the following.
 
 ```
 
-Running `verticalcheck --json will display ` will display the following.
+Running `verticalcheck --json` will display will display the following.
 
 ```json
 [ { check: 'dns',
