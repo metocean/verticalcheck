@@ -12,6 +12,7 @@ groupby = (array, accessor) ->
 class ViewModel
 	constructor: ->
 		@results = ko.observableArray []
+		@haserror = ko.observable no
 	
 	query: =>
 		$.get 'api', (results) =>
@@ -21,6 +22,12 @@ class ViewModel
 				@results.push
 					key: result.key
 					items: groupby result.items, (r) -> r.check
+			@haserror no
+			for grouping in @results()
+				for checktype in grouping.items
+					for check in checktype.items
+						if !check.isUp
+							@haserror yes
 	
 	click: (check) =>
 		alert check.message

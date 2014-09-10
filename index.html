@@ -7,8 +7,8 @@
     <meta name="description" content="MetOcean Vertical Check">
     <meta name="author" content="MetOcean Solutions Ltd">
     <link rel="shortcut icon" href="favicon.ico" />
-    <link type="text/css" rel="stylesheet" href="style.css">
     <link type="text/css" rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="style.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
@@ -24,6 +24,19 @@
     </div>
     <div class="container results" data-bind="visible: results().length != 0">
       <h1>MetOcean Vertical Check</h1>
+      <div data-bind="visible: haserror()">
+        <ul class="list-group list-group-danger" data-bind="foreach: results">
+          <!-- ko foreach: items -->
+          <!-- ko foreach: items -->
+          <!-- ko if: !isUp -->
+          <li class="list-group-item">
+            <span data-bind="text: message"></span>
+          </li>
+          <!-- /ko -->
+          <!-- /ko -->
+          <!-- /ko -->
+        </ul>
+      </div>
       <div data-bind="foreach: results">
         <div class="panel panel-default">
           <div class="panel-heading">
