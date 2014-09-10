@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MetOcean Vertical Check">
+    <meta name="author" content="MetOcean Solutions Ltd">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    
+    <script src="script.js"></script>
+    
+    <title>MetOcean Vertical Check</title>
+  </head>
+
+  <body>
+    <div class="loading" data-bind="visible: results().length == 0">
+      <p>Loading&hellip;</p>
+    </div>
+    <div class="container results" data-bind="visible: results().length != 0">
+      <h1>MetOcean Vertical Check</h1>
+      <div data-bind="foreach: results">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title" data-bind="text: key"></h3>
+          </div>
+          <ul class="list-group" data-bind="foreach: items">
+            <li class="list-group-item">
+              <span data-bind="text: key"></span>
+              <span class="pull-right" data-bind="foreach: items">
+                <a href="#" data-bind="attr: { title: message }, css: { 'check-yes': isUp, 'check-no': !isUp }, click: $parents[2].click">
+                  <span data-bind="visible: isUp" class="glyphicon glyphicon-ok-circle"></span>
+                  <span data-bind="visible: !isUp" class="glyphicon glyphicon-remove-circle"></span>
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,14 +2,41 @@
 (function() {
   [
     {
+      name: 'MetOceanView',
       dns: {
-        'google.co.nz': ['131.203.3.159', '131.203.3.187', '131.203.3.170', '131.203.3.165', '131.203.3.152', '131.203.3.174', '131.203.3.144', '131.203.3.185', '131.203.3.176', '131.203.3.148', '131.203.3.155', '131.203.3.166', '131.203.3.181', '131.203.3.177', '131.203.3.163', '131.203.3.154']
+        'fugro.metoceanview.com': '192.64.32.82',
+        'metra.metoceanview.com': '192.64.32.82',
+        'forecast.metoceanview.com': '192.64.32.82',
+        'hindcast.metoceanview.com': '192.64.32.82',
+        'route.metoceanview.com': '192.64.32.82',
+        'climate.metoceanview.com': '74.208.230.214',
+        'route.metoceanview.com': '192.64.32.82',
+        'eri.metoceanview.com': '192.64.32.82',
+        'metoceanview.com': '192.64.32.82'
       },
-      ping: ['google.co.nz'],
+      ping: ['192.64.32.82', '74.208.230.214'],
+      http: ['http://fugro.metoceanview.com', 'http://metra.metoceanview.com', 'http://forecast.metoceanview.com', 'http://hindcast.metoceanview.com', 'http://route.metoceanview.com', 'http://climate.metoceanview.com', 'http://route.metoceanview.com', 'http://eri.metoceanview.com', 'http://metoceanview.com']
+    }, {
+      name: 'SwellMap, WeatherMap & SnowMap',
+      dns: {
+        'swellmap.co.nz': '173.230.243.117',
+        'www.swellmap.co.nz': '173.230.243.117',
+        'weathermap.co.nz': '173.230.243.117',
+        'www.weathermap.co.nz': '173.230.243.117'
+      },
+      ping: ['swellmap.co.nz', 'weathermap.co.nz', 'snowmap.co.nz'],
+      http: ['http://swellmap.co.nz/', 'http://www.swellmap.co.nz/', 'http://weathermap.co.nz/', 'http://www.weathermap.co.nz/', 'http://snowmap.co.nz/', 'http://www.snowmap.co.nz/']
+    }, {
+      name: 'MetOcean Public Website',
+      dns: {
+        'metocean.co.nz': '173.230.243.117',
+        'www.metocean.co.nz': '173.230.243.117'
+      },
+      ping: ['metocean.co.nz'],
       http: [
         {
-          'http://google.co.nz/': 301
-        }
+          'http://metocean.co.nz/': 301
+        }, 'http://www.metocean.co.nz/'
       ]
     }
   ];
