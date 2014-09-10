@@ -30,7 +30,8 @@
           <!-- ko foreach: items -->
           <!-- ko if: !isUp -->
           <li class="list-group-item">
-            <span data-bind="text: message"></span>
+            <b data-bind="text: message"></b><br /><br />
+            <span data-bind="text: explanation"></span>
           </li>
           <!-- /ko -->
           <!-- /ko -->
@@ -46,7 +47,7 @@
             <li class="list-group-item">
               <span data-bind="text: key"></span>
               <span class="pull-right" data-bind="foreach: items">
-                <a href="#" data-bind="attr: { title: message }, css: { 'check-yes': isUp, 'check-no': !isUp }, click: $parents[2].click">
+                <a href="#" data-bind="attr: { title: (message + '\n' + '\n' + explanation) }, css: { 'check-yes': isUp, 'check-no': !isUp }, click: $parents[2].click">
                   <span data-bind="visible: isUp" class="glyphicon glyphicon-ok-circle"></span>
                   <span data-bind="visible: !isUp" class="glyphicon glyphicon-remove-circle"></span>
                 </a>

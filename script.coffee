@@ -30,7 +30,7 @@ class ViewModel
 							@haserror yes
 	
 	click: (check) =>
-		alert check.message
+		alert "#{check.message}\n\n#{check.explanation}"
 
 $ ->
 	vm = new ViewModel

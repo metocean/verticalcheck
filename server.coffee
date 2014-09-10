@@ -13,17 +13,10 @@ route '/script.js', 'application/javascript', 'script.js'
 CSON = require 'cson'
 config = CSON.parseFileSync 'verticalcheck.cson'
 
-api = [
-	check: 'dns'
-	isUp: yes
-	param: 'google.co.nz'
-	message: 'dns entry google.co.nz resolves to 16 known ip addresses'
-]
-
 results = null
 calculatedTime = 0
-result = (task, check, isUp, param, message) ->
-  results.push name: task.name, check: check, isUp: isUp, param: param, message: message
+result = (task, check, isUp, param, message, explanation) ->
+  results.push name: task.name, check: check, isUp: isUp, param: param, message: message, explanation: explanation
 verticalcheck = (cb) ->
 	currentTime = new Date().getTime()
 	return cb() if currentTime < calculatedTime + 5 * 60 * 1000

@@ -69,11 +69,11 @@
           return dns.resolve4(host, function(err, addresses) {
             var a, skip, _i, _len;
             if (err != null) {
-              result(task, 'dns', false, host, "" + host + " → ???");
+              result(task, 'dns', false, host, "" + host + " → ??? " + err, "There was an error looking up the DNS address. Either the address does not resolve to an IP address or this server is having DNS or connectivity issues. Have a look at the DNS server to see if it is correctly configured and have a look at this server's network to see if it is working correctly.");
               return cb();
             }
             if (addresses.length === 1 && addresses[0] === ip) {
-              result(task, 'dns', true, host, "" + host + " → " + ip);
+              result(task, 'dns', true, host, "" + host + " → " + ip, "The DNS address correctly resolved.");
               return cb();
             }
             if (Object.prototype.toString.call(ip) === '[object Array]' && addresses.length === ip.length) {
@@ -86,11 +86,11 @@
                 }
               }
               if (!skip) {
-                result('dns', true, host, "" + host + " → " + ip.length + " ip addresses");
+                result('dns', true, host, "" + host + " → " + ip.length + " ip addresses", "The DNS address correctly resolved to multiple IP addresses.");
                 return cb();
               }
             }
-            result(task, 'dns', false, host, "" + host + " → " + addresses + " instead of " + ip);
+            result(task, 'dns', false, host, "" + host + " → " + addresses + " instead of " + ip, "The DNS address resolved to an unexpected address. The address may have been intentionally changed or we may be experiencing DNS issues. Have a look at the DNS server to see if it is correctly configured.");
             return cb();
           });
         });
@@ -107,9 +107,9 @@
         return function(callback) {
           return ping.sys.probe(host, function(isAlive) {
             if (!isAlive) {
-              result(task, 'ping', false, host, "" + host + " is down");
+              result(task, 'ping', false, host, "" + host + " is down", "The specified host did not respond to ping. This could because this server was not able to contact that IP address due to connectivity issues, or the host has been configured not to respond to ping, or the host is currently not running. Check to see if the host server is running.");
             } else {
-              result(task, 'ping', true, host, "" + host + " is up");
+              result(task, 'ping', true, host, "" + host + " is up", "The host responded to ping.");
             }
             return callback();
           });
@@ -153,9 +153,9 @@
               return;
             }
             if (res.statusCode === code) {
-              result(task, 'http', true, url, "" + url + " responded");
+              result(task, 'http', true, url, "" + url + " responded", "The specified url responded to an http request.");
             } else {
-              result(task, 'http', false, url, "" + url + " expected " + code + " received " + res.statusCode + " instead");
+              result(task, 'http', false, url, "" + url + " expected " + code + " received " + res.statusCode + " instead", "The url was requested successfully however the status code this server received was not expected. Normal content has a status code of 200. Status codes of 301 and 302 are redirects and are often used for login systems. Status codes of 400 means that the request this server made was bad. A status code of 403 means permission denied. 404 means not found and a status code of 500 means that there was an error on the server. If the status code returned is 500 the server needs to be looked at as the webserver is having an issue. Any other status codes are probably due to a configuration issue or this server is talking to the wrong server.");
             }
             hasReturned = true;
             return callback();
@@ -163,7 +163,7 @@
             if (hasReturned) {
               return;
             }
-            result(task, 'http', false, url, "" + url + " " + err.message);
+            result(task, 'http', false, url, "" + url + " " + err.message, "An error occurred when attempting an http request. This is often a network issue. Look at the DNS for the destination server and this server's network connectivity.");
             hasReturned = true;
             return callback();
           });
@@ -171,7 +171,7 @@
             if (hasReturned) {
               return;
             }
-            result(task, 'http', false, url, "" + url + " timed out after 5 seconds");
+            result(task, 'http', false, url, "" + url + " timed out after 5 seconds", "5 seconds has elapsed with no response from the destination server. This happens when the destination server is not running a webserver, the destination server currently not running or this server is having network problems. Check the IP address for the destination server and make sure it responds to ping then check to see if the webserver is running correctly on the destination server.");
             hasReturned = true;
             return callback();
           });

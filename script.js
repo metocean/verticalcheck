@@ -85,7 +85,7 @@
     };
 
     ViewModel.prototype.click = function(check) {
-      return alert(check.message);
+      return alert("" + check.message + "\n\n" + check.explanation);
     };
 
     return ViewModel;
