@@ -121,7 +121,7 @@
       var tasks;
       tasks = task.http.map(function(url) {
         return function(callback) {
-          var chunks, code, href, key, options, port, req, value;
+          var chunks, code, hasReturned, href, key, options, port, req, value;
           code = 200;
           if (typeof url === 'object') {
             for (key in url) {
@@ -147,19 +147,32 @@
               options.port = 80;
             }
           }
+          hasReturned = false;
           req = httpget(options, function(res) {
+            if (hasReturned) {
+              return;
+            }
             if (res.statusCode === code) {
               result(task, 'http', true, url, "" + url + " responded");
             } else {
               result(task, 'http', false, url, "" + url + " expected " + code + " received " + res.statusCode + " instead");
             }
+            hasReturned = true;
             return callback();
           }).on('error', function(err) {
+            if (hasReturned) {
+              return;
+            }
             result(task, 'http', false, url, "" + url + " " + err.message);
+            hasReturned = true;
             return callback();
           });
-          return req.setTimeout(10000, function() {
+          return req.setTimeout(5000, function() {
+            if (hasReturned) {
+              return;
+            }
             result(task, 'http', false, url, "" + url + " timed out after 5 seconds");
+            hasReturned = true;
             return callback();
           });
         };

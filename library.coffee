@@ -84,18 +84,25 @@ checks =
 				options.port = 443 if chunks.protocol is 'https:'
 				options.port = 80 if chunks.protocol is 'http:'
 			
+			hasReturned = no
 			req = httpget(options, (res) ->
+				return if hasReturned
 				if res.statusCode is code
 					result task, 'http', yes, url, "#{url} responded"
 				else
 					result task, 'http', no, url, "#{url} expected #{code} received #{res.statusCode} instead"
+				hasReturned = yes
 				callback()
 			).on('error', (err) ->
+				return if hasReturned
 				result task, 'http', no, url, "#{url} #{err.message}"
+				hasReturned = yes
 				callback()
 			)
-			req.setTimeout 10000, ->
+			req.setTimeout 5000, ->
+				return if hasReturned
 				result task, 'http', no, url, "#{url} timed out after 5 seconds"
+				hasReturned = yes
 				callback()
 		parallel tasks, cb
 

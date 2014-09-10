@@ -31,10 +31,10 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
-  display: table;
 }
 .loading p {
-  display: table-cell;
-  vertical-align: middle;
+  position: absolute;
+  top: 30%;
   font-size: 50px;
+  width: 100%;
 }
