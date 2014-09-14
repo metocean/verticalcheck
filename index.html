@@ -24,6 +24,18 @@
     </div>
     <div class="container results" data-bind="visible: results().length != 0">
       <h1>MetOcean Vertical Check</h1>
+      <button data-bind="click: refresh, css: { active: autorefresh }" class="refresh btn btn-default" style="margin-bottom: 20px;" data-toggle="button">
+        <span class="glyphicon glyphicon-refresh"></span>
+        <span data-bind="visible: state() == 'idle'">
+          Enable auto refresh
+        </span>
+        <span data-bind="visible: state() == 'counting down'">
+          Refreshing in <span data-bind="text: countdown"></span>s
+        </span>
+        <span data-bind="visible: state() == 'refreshing'">
+          Refreshing...
+        </span>
+      </button>
       <div data-bind="visible: haserror()">
         <ul class="list-group list-group-danger" data-bind="foreach: results">
           <!-- ko foreach: items -->
@@ -47,10 +59,7 @@
             <li class="list-group-item">
               <span data-bind="text: key"></span>
               <span class="pull-right" data-bind="foreach: items">
-                <a href="#" data-bind="attr: { title: (message + '\n' + '\n' + explanation) }, css: { 'check-yes': isUp, 'check-no': !isUp }, click: $parents[2].click">
-                  <span data-bind="visible: isUp" class="glyphicon glyphicon-ok-circle"></span>
-                  <span data-bind="visible: !isUp" class="glyphicon glyphicon-remove-circle"></span>
-                </a>
+                <a href="#" data-bind="attr: { title: (message + '\n' + '\n' + explanation) }, css: { 'check-yes': isUp, 'check-no': !isUp }, click: $parents[2].click"><span data-bind="visible: isUp" class="glyphicon glyphicon-ok-circle"></span><span data-bind="visible: !isUp" class="glyphicon glyphicon-remove-circle"></span></a>
               </span>
             </li>
           </ul>

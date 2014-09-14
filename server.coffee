@@ -17,9 +17,10 @@ results = null
 calculatedTime = 0
 result = (task, check, isUp, param, message, explanation) ->
   results.push name: task.name, check: check, isUp: isUp, param: param, message: message, explanation: explanation
+
 verticalcheck = (cb) ->
 	currentTime = new Date().getTime()
-	return cb() if currentTime < calculatedTime + 5 * 60 * 1000
+	return cb() if currentTime < calculatedTime + 1 * 60 * 1000
 	
 	calculatedTime = currentTime
 	results = []
@@ -31,8 +32,9 @@ route '/api', (req, res) ->
 		res.end JSON.stringify results
 
 server = http.createServer (req, res) ->
+	url = req.url.split('?')[0]
 	for file in files
-		if file.u is req.url
+		if file.u is url
 			return file.t req, res if typeof file.t is 'function'
 			res.writeHead 200, 'Content-Type': file.t
 			res.end fs.readFileSync file.c

@@ -11,7 +11,7 @@ body {
 }
 .check-yes,
 .check-no {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .check-yes {
   color: #008d00;
@@ -52,4 +52,15 @@ body {
 }
 h1 {
   margin-bottom: 30px;
+}
+button.btn:focus,
+button.btn:active,
+button.btn:hover,
+button.btn.active {
+  outline: none !important;
+  background-color: white;
+}
+.refresh.active {
+  color: #008d00;
+  border-color: #008d00;
 }
