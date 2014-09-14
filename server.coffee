@@ -11,7 +11,7 @@ route '/style.css', 'text/css', 'style.css'
 route '/script.js', 'application/javascript', 'script.js'
 
 CSON = require 'cson'
-config = CSON.parseFileSync 'verticalcheck.cson'
+config = null
 
 results = null
 calculatedTime = 0
@@ -27,6 +27,7 @@ verticalcheck = (cb) ->
 	require('./library') config, result, cb
 
 route '/api', (req, res) ->
+	config = CSON.parseFileSync 'verticalcheck.cson'
 	verticalcheck ->
 		res.writeHead 200, 'Content-Type': 'application/json'
 		res.end JSON.stringify results

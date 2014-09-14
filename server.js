@@ -25,7 +25,7 @@ route('/script.js', 'application/javascript', 'script.js');
 
 CSON = require('cson');
 
-config = CSON.parseFileSync('verticalcheck.cson');
+config = null;
 
 results = null;
 
@@ -54,6 +54,7 @@ verticalcheck = function(cb) {
 };
 
 route('/api', function(req, res) {
+  config = CSON.parseFileSync('verticalcheck.cson');
   return verticalcheck(function() {
     res.writeHead(200, {
       'Content-Type': 'application/json'
