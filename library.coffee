@@ -1,7 +1,9 @@
 dns = require 'dns'
 ping = require 'ping'
 parseurl = require('url').parse
-httpget = require('http').get
+webget =
+	'http:': require('http').get
+	'https:': require('https').get
 
 series = (tasks, callback) ->
 	tasks = tasks.slice 0
@@ -85,7 +87,7 @@ checks =
 				options.port = 80 if chunks.protocol is 'http:'
 			
 			hasReturned = no
-			req = httpget(options, (res) ->
+			req = webget[chunks.protocol](options, (res) ->
 				return if hasReturned
 				if res.statusCode is code
 					result task, 'http', yes, url, "#{url} responded", "The specified url responded to an http request."
