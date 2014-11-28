@@ -13,14 +13,14 @@
 			'metoceanview.com': '192.64.32.82'
 		ping: ['192.64.32.82']
 		http: [
-			'http://fugro.metoceanview.com'
-			'http://metra.metoceanview.com'
-			'http://forecast.metoceanview.com'
-			'http://hindcast.metoceanview.com'
-			'http://route.metoceanview.com'
-			'http://climate.metoceanview.com'
-			'http://route.metoceanview.com'
-			'http://eri.metoceanview.com'
+			'http://fugro.metoceanview.com': 301
+			'http://metra.metoceanview.com': 301
+			'http://forecast.metoceanview.com': 301
+			'http://hindcast.metoceanview.com': 301
+			'http://route.metoceanview.com': 301
+			'http://climate.metoceanview.com': 301
+			'http://route.metoceanview.com': 301
+			'http://eri.metoceanview.com': 301
 			'http://metoceanview.com'
 		]
 	}
@@ -74,8 +74,6 @@
 			'https://tiles.metoceanview.com/wxtiles/wxtiles.v2.min.js'
 			'http://ukcd.metoceanview.com/docs'
 			'http://psfd.metoceanview.com/docs'
-			'https://ukcd.metoceanview.com/docs'
-			'https://psfd.metoceanview.com/docs'
 			'http://graphd.metoceanview.com/docs'
 			'http://hcd.metoceanview.com/docs'
 			'http://maps.metoceanview.com/'
